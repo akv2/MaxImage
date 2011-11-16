@@ -1,0 +1,65 @@
+// This import applies a global reset to any page that imports this stylesheet.
+@import "blueprint/reset";
+
+// To configure blueprint, edit the partials/base.sass file.
+@import "partials/base";
+
+// Import all the default blueprint modules so that we can access their mixins.
+@import "blueprint";
+
+// Import the non-default scaffolding module.
+@import "blueprint/scaffolding";
+
+// To generate css equivalent to the blueprint css but with your
+// configuration applied, uncomment:
+// @include blueprint
+
+// If you are doing a lot of stylesheet concatenation, it is suggested
+// that you scope your blueprint styles, so that you can better control
+// what pages use blueprint when stylesheets are concatenated together.
+body.bp {
+  @include blueprint-typography(true);
+  @include blueprint-utilities;
+  @include blueprint-debug;
+  @include blueprint-interaction;
+  // Remove the scaffolding when you're ready to start doing visual design.
+  // Or leave it in if you're happy with how blueprint looks out-of-the-box
+}
+
+form.bp {
+  @include blueprint-form;
+  // You'll probably want to remove the scaffolding once you start styling your site.
+  @include blueprint-scaffolding; }
+
+// Page layout can be done using mixins applied to your semantic classes and IDs:
+body.two-col {
+  #container {
+    @include container; }
+  #header, #footer {
+    @include column($blueprint-grid-columns); }
+  #sidebar {
+    // One third of the grid columns, rounding down. With 24 cols, this is 8.
+    $sidebar-columns: floor($blueprint-grid-columns / 3);
+    @include column($sidebar-columns); }
+  #content {
+    // Two thirds of the grid columns, rounding up.
+    // With 24 cols, this is 16.
+    $content-columns: ceil(2 * $blueprint-grid-columns / 3);
+    // true means it's the last column in the row
+    @include column($content-columns, true); } }
+
+
+
+body {color:#333;font-family:georgia,arial,sans-serif;font-size:62.5%;margin:0;padding:0;text-shadow: 0 1px 0 #fff;}
+.container {bottom:40px;margin:40px;width:700px;}
+h1 {color:#333;font-family:'Helvetica Neue',helvetica,arial,sans-serif;font-size:28em;font-weight:100;line-height:1em;margin:20% 0 0 0;}
+a {color:#ff6600;}
+p {background:#F1F1F1;font-size:2.5em;font-weight:300;line-height:1.5em;opacity:0.8;padding:10px;}
+p.step {}
+p.step span.num {background:#ffffcc;-moz-box-shadow: 0 0 15px #ccc;-moz-box-shadow: 0 0 15px #ccc;-webkit-box-shadow: 0 0 15px #ccc;box-shadow: 0 0 15px #ccc;}
+
+div.reset {color:#333;padding:20px;text-shadow: 0 0 0 #000;}
+div.reset aside {font-size:3em;font-weight:300;}
+div.reset h2 {font-size:16px;}
+div.reset p {font-size:12px;}
+p.small-font-size {font-size:14px;}

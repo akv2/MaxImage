@@ -150,7 +150,7 @@
 			<div class="first-item">
 				<img src="lib/images/demo/wall_portrait.jpg" alt="" />
 				<img id="gradient" src="lib/images/demo/gradient.png" alt="" />
-				<div class="in-slide-content">
+				<div class="in-slide-content" style="display:none;">
 					<p>Remember, you are not limited to image elements.  You can display other HTML too.</p>
 					<p><a href="http://blog.aaronvanderzwan.com/2011/11/maximage-2-0-beta1-release/" target="_blank" style="font-weight:bold">More info >></a></p>
 				</div>
@@ -196,6 +196,9 @@
 						jQuery('#maximage').fadeIn('fast');
 					}
 				});
+				
+				// To show it is dynamic html text
+				$('.in-slide-content').delay(1200).fadeIn();
 			});
 		</script>
 		

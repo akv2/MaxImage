@@ -11,7 +11,7 @@ re: alancwoo - Added the ability to use a data-href attribute on the images. Thu
 
 ## Changelog:
 
-Version 2.0-beta3.2:
+Version 2.0:
 * Fixed compatibility with older browsers, specifically a bug that was creating white space after browser resize
 
 Version 2.0-beta3:

@@ -1,7 +1,7 @@
-### Currently at Version 2.0-beta3.2
+## Currently at Version 2
 
 Documentation can be found at:
-http://blog.aaronvanderzwan.com/2011/11/maximage-2-0-beta1-release/
+http://blog.aaronvanderzwan.com/2012/07/maximage-2-0/
 
 Demo can be found at:
 http://www.aaronvanderzwan.com/maximage/2.0/

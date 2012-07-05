@@ -8,7 +8,7 @@
 	Dual licensed under the MIT and GPL licenses.
 	http://jquery.malsup.com/license.html
 	
-	Version: 0.1-alpha (02-June-2011)
+	Version: 0.3.2-beta (07-July-2012)
 */
 
 
@@ -35,4 +35,8 @@ div.mc-image {
 	background-repeat:no-repeat;
 	height:100%;
 	width:100%;
+}
+
+.mc-old-browser .mc-image {
+	overflow:hidden;
 }

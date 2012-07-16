@@ -9,7 +9,7 @@ http://www.aaronvanderzwan.com/maximage/2.0/
 ## Changelog:
 
 Version 2.0.2:
-* Added fitElement option that provides the ability to constrain your slideshow to a container element (not just the window)
+* Added fillElement option that provides the ability to constrain your slideshow to a container element (not just the window)
 
 Version 2.0.1: 
 * Added backgroundSize option so that older browsers can act as though they support CSS3 background-size:contain

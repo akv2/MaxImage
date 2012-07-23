@@ -1,4 +1,4 @@
-## Currently at Version 2.0.2
+## Currently at Version 2.0.3
 
 Documentation can be found at:
 http://blog.aaronvanderzwan.com/2012/07/maximage-2-0/
@@ -8,8 +8,11 @@ http://www.aaronvanderzwan.com/maximage/2.0/
 
 ## Changelog:
 
+Version 2.0.3:
+* Added "noBackgroundPosition" option that forces the plugin to run without using CSS3's background-position
+
 Version 2.0.2:
-* Added fillElement option that provides the ability to constrain your slideshow to a container element (not just the window)
+* Added "fillElement" option that provides the ability to constrain your slideshow to a container element (not just the window)
 
 Version 2.0.1: 
 * Added backgroundSize option so that older browsers can act as though they support CSS3 background-size:contain

@@ -23,6 +23,8 @@
 		<link rel="stylesheet" href="lib/css/jquery.maximage.css?v=1.2" type="text/css" media="screen" charset="utf-8" />
 		<link rel="stylesheet" href="lib/css/screen.css?v=1.2" type="text/css" media="screen" charset="utf-8" />
 		
+		<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+		
 		<style type="text/css" media="screen">
 			/* I wanted to center my loader */
 			#cycle-loader {
@@ -168,6 +170,7 @@
 				</div>
 				<video id="html5video" autoplay="autoplay" loop="loop" autobuffer="autobuffer" muted="muted" width="320" height="240">
 					<source src="lib/video/kissing.m4v" type="video/mp4" />
+					<source src="lib/video/kissing.webm" type="video/webm" />
 					<source src="lib/video/kissing.ogv" type="video/ogg" />
 					Your browser does not support the video tag.
 				</video>
@@ -211,7 +214,8 @@
 					onFirstImageLoaded: function(){
 						jQuery('#cycle-loader').hide();
 						jQuery('#maximage').fadeIn('fast');
-					}
+					},
+					noBackgroundPosition: true
 				});
 				
 				// To show it is dynamic html text

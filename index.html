@@ -198,7 +198,7 @@
 					cycleOptions: {
 						slideResize: 0,
 						fx: 'fade',
-						speed: 800,
+						speed: 3000,
 						timeout: 0,
 						prev: '#arrow_left',
 						next: '#arrow_right',
@@ -221,19 +221,19 @@
 				// To show it is dynamic html text
 				$('.in-slide-content').delay(1200).fadeIn();
 				
-// Center Video (HTML5)
-var vid = jQuery('#html5video'),
-	$window = jQuery(window),
-	ratio = vid.width() / vid.height();
+				// Center Video (HTML5)
+				var vid = jQuery('#html5video'),
+					$window = jQuery(window),
+					ratio = vid.width() / vid.height();
 
-$window.bind('resize.maximage', function(){
-	if($window.width() / $window.height() > ratio){
-		vid.css({'width':$window.width(),'height': $window.width() / ratio,'left':0,'top':(($window.width() / ratio) - $window.height()) / 2 * -1});
-	}else{
-		vid.css({'height':$window.height(),'width': $window.height() * ratio,'top':0,'left':(($window.height() * ratio) - $window.width()) / 2 * -1});
-	}
-});
-$window.trigger('resize.maximage');
+				$window.bind('resize.maximage', function(){
+					if($window.width() / $window.height() > ratio){
+						vid.css({'width':$window.width(),'height': $window.width() / ratio,'left':0,'top':(($window.width() / ratio) - $window.height()) / 2 * -1});
+					}else{
+						vid.css({'height':$window.height(),'width': $window.height() * ratio,'top':0,'left':(($window.height() * ratio) - $window.width()) / 2 * -1});
+					}
+				});
+				$window.trigger('resize.maximage');
 			});
 		</script>
 		

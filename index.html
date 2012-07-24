@@ -136,7 +136,7 @@
 				top:0;
 			}
 			video {
-				position:fixed;
+				position:absolute;
 			}
 		</style>
 		
@@ -189,16 +189,15 @@
 		
 		<script src='//ajax.googleapis.com/ajax/libs/jquery/1/jquery.js'></script>
 		<script src="lib/js/jquery.cycle.all.js" type="text/javascript" charset="utf-8"></script>
-		<script src="lib/js/jquery.easing.1.3.js" type="text/javascript" charset="utf-8"></script>
 		<script src="lib/js/jquery.maximage.js" type="text/javascript" charset="utf-8"></script>
 		
 		<script type="text/javascript" charset="utf-8">
 			$(function(){
-				$('#maximage').maximage({
+				$('#maximage').addClass('css-transitions').maximage({
 					cycleOptions: {
-						slideResize: 0,
-						fx: 'fade',
-						speed: 3000,
+						cssBackgroundSize: true,
+						fx: 'scrollHorz',
+						speed: 1500, // Set the speed in CSS for CSS transitions too (lines 33 - 36 in jQuery.maximage.css)
 						timeout: 0,
 						prev: '#arrow_left',
 						next: '#arrow_right',
@@ -214,8 +213,7 @@
 					onFirstImageLoaded: function(){
 						jQuery('#cycle-loader').hide();
 						jQuery('#maximage').fadeIn('fast');
-					},
-					noBackgroundPosition: true
+					}
 				});
 				
 				// To show it is dynamic html text

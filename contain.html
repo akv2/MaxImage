@@ -135,6 +135,23 @@
 				position:absolute;
 				top:0;
 			}
+			
+			
+			/* Position Maximage relatively (this is not default) */
+			#maximage {
+			    position:relative !important;
+			}
+			div.mc-image {    
+			    -webkit-background-size: contain;
+			    -moz-background-size: contain;
+			    -o-background-size: contain;
+			    background-size: contain;
+			}
+
+			#holder {
+			    margin:0 auto;
+			    width:400px;
+			}
 		</style>
 		
 		<!--[if IE 6]>
@@ -150,38 +167,29 @@
 		<a href="" id="arrow_right"><img src="lib/images/demo/arrow_right.png" alt="Slide Right" /></a>
 		
 		<img id="cycle-loader" src="lib/images/ajax-loader.gif" />
-		<div id="maximage">
-			<div class="first-item">
+		<div id="holder">
+			<div id="maximage">
 				<img src="lib/images/demo/wall_portrait.jpg" alt="" class="max" />
-				<img id="gradient" src="lib/images/demo/gradient.png" alt="" />
-				<div class="in-slide-content" style="display:none;">
-					<p>Remember, you are not limited to image elements.  You can display other HTML too.</p>
-					<p><a href="http://blog.aaronvanderzwan.com/2011/11/maximage-2-0-beta1-release/" target="_blank" style="font-weight:bold">More info >></a></p>
+				<div class="video">
+					<img src="lib/images/demo/kissing.jpg" alt="" />
+					<video id="html5video" autoplay="autoplay" loop="loop" autobuffer="autobuffer" muted="muted" width="320" height="240">
+						<source src="lib/video/kissing.m4v" type="video/mp4" />
+						<source src="lib/video/kissing.webm" type="video/webm" />
+						<source src="lib/video/kissing.ogv" type="video/ogg" />
+						Your browser does not support the video tag.
+					</video>
 				</div>
-			</div>
-			<div class="video">
-				<img src="lib/images/demo/kissing.jpg" alt="" />
-				<div class="in-slide-content light-text smaller-text">
-					<p>Maximage does not assume anything about your in-slide HTML.  So you can resize HTML5 videos to fill the screen (using your own JS) or you can place it on the page with a standard maximized background image.</p>
-					<p><a href="http://blog.aaronvanderzwan.com/2011/11/maximage-2-0-beta1-release/" target="_blank" style="font-weight:bold">More info >></a></p>
+				<img src="lib/images/demo/coalesse.jpg" alt="Coalesse" data-href="http://www.google.com/" />
+				<img src="lib/images/demo/laughing.jpg" alt="" />
+				<div class="video">
+					<img src="lib/images/demo/pattern.jpg" alt="" />
+					<iframe width="100%" height="100%" src="http://www.youtube.com/embed/KVwSP51KVO8?wmode=opaque" frameborder="0" class="youtube-video" allowfullscreen></iframe>
 				</div>
-				<video id="html5video" autoplay="autoplay" loop="loop" autobuffer="autobuffer" muted="muted" width="320" height="240">
-					<source src="lib/video/kissing.m4v" type="video/mp4" />
-					<source src="lib/video/kissing.webm" type="video/webm" />
-					<source src="lib/video/kissing.ogv" type="video/ogg" />
-					Your browser does not support the video tag.
-				</video>
+				<img src="lib/images/demo/roof_shooting.jpg" alt="" />
+				<img src="lib/images/demo/man.jpg" alt="" />
+				<img src="lib/images/demo/coffee_shop.jpg" alt="" />
+				<img src="lib/images/demo/gas_station.jpg" alt="" />
 			</div>
-			<img src="lib/images/demo/coalesse.jpg" alt="Coalesse" data-href="http://www.google.com/" />
-			<img src="lib/images/demo/laughing.jpg" alt="" />
-			<div class="video">
-				<img src="lib/images/demo/pattern.jpg" alt="" />
-				<iframe width="100%" height="100%" src="http://www.youtube.com/embed/KVwSP51KVO8?wmode=opaque" frameborder="0" class="youtube-video" allowfullscreen></iframe>
-			</div>
-			<img src="lib/images/demo/roof_shooting.jpg" alt="" />
-			<img src="lib/images/demo/man.jpg" alt="" />
-			<img src="lib/images/demo/coffee_shop.jpg" alt="" />
-			<img src="lib/images/demo/gas_station.jpg" alt="" />
 		</div>
 		
 		<script src='//ajax.googleapis.com/ajax/libs/jquery/1/jquery.js'></script>
@@ -194,7 +202,7 @@
 					cycleOptions: {
 						fx: 'scrollHorz',
 						speed: 1500, // Set the speed for CSS transitions in jQuery.maximage.css (lines 30 - 33)
-						timeout: 0,
+						timeout: 5000,
 						prev: '#arrow_left',
 						next: '#arrow_right',
 						pause: 1
@@ -202,11 +210,13 @@
 					onFirstImageLoaded: function(){
 						jQuery('#cycle-loader').hide();
 						jQuery('#maximage').fadeIn('fast');
-					}
+					},
+					fillElement: '#holder',
+					backgroundSize: 'contain'
 				});
 				
 				// Helper function to Fill and Center the HTML5 Video
-				jQuery('#html5video').maximage('maxcover');
+				jQuery('#html5video, .youtube-video').maximage('maxcontain');
 				
 				// To show it is dynamic html text
 				jQuery('.in-slide-content').delay(1200).fadeIn();

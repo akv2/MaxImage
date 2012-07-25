@@ -3,10 +3,16 @@
 Documentation can be found at:
 http://blog.aaronvanderzwan.com/2012/07/maximage-2-0/
 
-Demo can be found at:
+Full demo can be found at:
 http://www.aaronvanderzwan.com/maximage/2.0/
 
 ## Changelog:
+
+Version 2.0.5:
+* Now you can call maximage on any object and it will fill and center it (pass it a string, 'maxcover', 'maxcontain', 'fill' or 'center').  This makes it really easy to have any visual element be the fullscreen background element of the slideshow (HTML5 video, etc). A small explanation / tutorial can be found at: http://blog.aaronvanderzwan.com/forums/topic/maximage-cover-helper-function/
+* Exposed options to be global
+* Created "Adjust" object to handle math for fit and center functions
+* Remove Timer object (it wasn't being used anymore)
 
 Version 2.0.4:
 * Added CSS transitions as the default 'easing' cycle option (Thanks to Roger Braunstein for this idea [http://partlyhuman.com/])

@@ -192,8 +192,8 @@
 			$(function(){
 				$('#maximage').maximage({
 					cycleOptions: {
-						fx: 'scrollHorz',
-						speed: 1500, // Set the speed for CSS transitions in jQuery.maximage.css (lines 30 - 33)
+						fx: 'fade',
+						speed: 3000, // Set the speed for CSS transitions in jQuery.maximage.css (lines 30 - 33)
 						timeout: 0,
 						prev: '#arrow_left',
 						next: '#arrow_right',
@@ -202,7 +202,8 @@
 					onFirstImageLoaded: function(){
 						jQuery('#cycle-loader').hide();
 						jQuery('#maximage').fadeIn('fast');
-					}
+					},
+					cssBackgroundSize: false // This option is causing choppiness in retina display safari
 				});
 				
 				// Helper function to Fill and Center the HTML5 Video

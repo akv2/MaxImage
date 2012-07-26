@@ -27,14 +27,14 @@ body .mc-cycle {
 }
 
 div.mc-image {
-	-webkit-transition: all 1.5s ease-in-out; 
-    -moz-transition: all 1.5s ease-in-out; 
-    -o-transition: all 1.5s ease-in-out; 
-    transition: all 1.5s ease-in-out;
-	-webkit-background-size: cover;
+	-webkit-transition: all 3s ease-in-out; 
+    -moz-transition: all 3s ease-in-out; 
+    -o-transition: all 3s ease-in-out; 
+    transition: all 3s ease-in-out;
+/*	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
-	background-size: cover;
+	background-size: cover;*/
 	background-position:center center;
 	background-repeat:no-repeat;
 	height:100%;

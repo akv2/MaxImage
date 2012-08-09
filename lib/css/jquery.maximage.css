@@ -9,7 +9,7 @@
 	http://jquery.malsup.com/license.html
 	
 */
-/*! Version: 2.0.5 (25-July-2012) */
+/*! Version: 2.0.6 (09-Aug-2012) */
 
 
 .mc-hide-scrolls{
@@ -27,14 +27,14 @@ body .mc-cycle {
 }
 
 div.mc-image {
-	-webkit-transition: all 3s ease-in-out; 
-    -moz-transition: all 3s ease-in-out; 
-    -o-transition: all 3s ease-in-out; 
-    transition: all 3s ease-in-out;
-/*	-webkit-background-size: cover;
+	-webkit-transition: all 1s ease-in-out; 
+    -moz-transition: all 1s ease-in-out; 
+    -o-transition: all 1s ease-in-out; 
+    transition: all 1s ease-in-out;
+	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
-	background-size: cover;*/
+	background-size: cover;
 	background-position:center center;
 	background-repeat:no-repeat;
 	height:100%;

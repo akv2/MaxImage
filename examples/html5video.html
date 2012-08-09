@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class='no-js' lang='en'>
+	<!--<![endif]-->
+	<head>
+		<meta charset='utf-8' />
+		<meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
+		<title>Easy Fullscreen Background HTML5 Video Example | Maximage 2.0</title>
+		<meta content='Maximage2: Fullscreen Background HTML5 Video' name='description' />
+		<meta content='Aaron Vanderzwan' name='author' />
+		<meta content='width=device-width, initial-scale=1.0' name='viewport' />
+		<link rel="stylesheet" href="../lib/css/jquery.maximage.css?v=1.2" type="text/css" media="screen" charset="utf-8" />
+		
+		<style type="text/css" media="screen">
+			html {overflow-x:hidden;}
+			body {font-family:arial;margin:0;padding:0;}
+			
+			video, object {
+				top:0;left:0;
+				position:absolute;
+			}
+			
+			h1, p {
+				background:white;
+				background-color:rgba(255, 255, 255, 0.8);
+				/* For IE 5.5 - 7*/
+				filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99FFFFFF, endColorstr=#99FFFFFF);
+				/* For IE 8*/
+				-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99FFFFFF, endColorstr=#99FFFFFF)";
+				position:relative;
+				padding:10px;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- HTML5 Video Code "Video For Everybody" http://camendesign.com/code/video_for_everybody -->
+		<video autoplay="autoplay" loop="loop" autobuffer="autobuffer" muted="muted" poster="http://sandbox.thewikies.com/vfe-generator/images/big-buck-bunny_poster.jpg" width="640" height="360">
+		    <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4" />
+		    <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm" type="video/webm" />
+		    <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv" type="video/ogg" />
+		    <object type="application/x-shockwave-flash" data="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" width="640" height="360">
+		        <param name="movie" value="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" />
+		        <param name="allowFullScreen" value="true" />
+		        <param name="wmode" value="transparent" />
+		        <param name="flashVars" value="config={'playlist':['http%3A%2F%2Fsandbox.thewikies.com%2Fvfe-generator%2Fimages%2Fbig-buck-bunny_poster.jpg',{'url':'http%3A%2F%2Fclips.vorwaerts-gmbh.de%2Fbig_buck_bunny.mp4','autoPlay':false}]}" />
+		        <img alt="Big Buck Bunny" src="http://sandbox.thewikies.com/vfe-generator/images/big-buck-bunny_poster.jpg" width="640" height="360" title="No video playback capabilities, please download the video below" />
+		    </object>
+		</video>
+		
+		<!-- Over content -->
+		<h1>Maximage2: Easy Fullscreen Background HTML5 Video Example</h1>
+		<p>HTML5 Video: Code taken from <a href="http://camendesign.com/code/video_for_everybody" target="_blank">http://camendesign.com/code/video_for_everybody</a> - "Video For Everybody" </p>
+		<p><strong>JS for this page:</strong><br />
+			<code>$(function(){<br />
+				&nbsp;// Helper function to Fill and Center the HTML5 Video<br />
+				&nbsp;jQuery('video, object').maximage('maxcover');<br />
+				});</code></p>
+		<p><strong>CSS for this page:</strong><br />
+			<code>
+			html {overflow-x:hidden;}<br />
+			body {margin:0;padding:0;}<br />
+			<br />
+			video, object {<br />
+			&nbsp;left:0;<br />
+			&nbsp;position:absolute;<br />
+			&nbsp;top:0;<br />
+			}</code></p>
+		<p><a href="http://blog.aaronvanderzwan.com/maximage-2-0/" target="_blank">Learn more about Maximage2<br />
+			<a href="http://www.aaronvanderzwan.com/maximage/2.0/">Demo of Maximage2 as a fullscreen background slideshow</a></p>
+		<script src='//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.js'></script>
+		<script type='text/javascript'>
+		//<![CDATA[
+			window.jQuery || document.write("<script src='lib/js/jquery.min.js'>\x3C/script>")
+		//]]>
+		</script>
+		
+		<script src='//ajax.googleapis.com/ajax/libs/jquery/1/jquery.js'></script>
+		<script src="../lib/js/jquery.cycle.all.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../lib/js/jquery.maximage.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript" charset="utf-8">
+$(function(){
+	// Helper function to Fill and Center the HTML5 Video
+	jQuery('video, object').maximage('maxcover');
+});
+		</script>
+		
+		
+		<!-- DON'T USE THIS: Google Analytics code -->
+		<script type="text/javascript">
+			
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-733524-1']);
+		  _gaq.push(['_trackPageview']);
+			
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+		</script>
+  </body>
+</html>

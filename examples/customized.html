@@ -165,12 +165,17 @@
 					<p>Maximage does not assume anything about your in-slide HTML.  So you can resize HTML5 videos to fill the screen (using your own JS) or you can place it on the page with a standard maximized background image.</p>
 					<p><a href="http://blog.aaronvanderzwan.com/2011/11/maximage-2-0-beta1-release/" target="_blank" style="font-weight:bold">More info >></a></p>
 				</div>
-				<video id="html5video" autoplay="autoplay" loop="loop" autobuffer="autobuffer" muted="muted" width="320" height="240">
-					<source src="../lib/video/kissing.m4v" type="video/mp4" />
-					<source src="../lib/video/kissing.webm" type="video/webm" />
-					<source src="../lib/video/kissing.ogv" type="video/ogg" />
+				<video id="html5video" autoplay="autoplay" loop="loop" muted="muted" controls="controls" poster="http://sandbox.thewikies.com/vfe-generator/images/big-buck-bunny_poster.jpg" width="640" height="360">
+					<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4" />
+					<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm" type="video/webm" />
+					<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv" type="video/ogg" />
 					Your browser does not support the video tag.
 				</video>
+				
+				<script type="text/javascript">
+					// IE Workaround for muted="muted"
+					$('#html5video')[0].volume = 0;
+				</script>
 			</div>
 			<img src="../lib/images/demo/coalesse.jpg" alt="Coalesse" data-href="http://www.google.com/" />
 			<img src="../lib/images/demo/laughing.jpg" alt="" />

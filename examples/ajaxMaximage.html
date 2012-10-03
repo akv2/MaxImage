@@ -150,44 +150,9 @@
 		<a href="" id="arrow_right"><img src="../lib/images/demo/arrow_right.png" alt="Slide Right" /></a>
 		
 		<img id="cycle-loader" src="../lib/images/ajax-loader.gif" />
-		<div id="maximage">
-			<div class="first-item" data-item="item thing">
-				<img src="../lib/images/demo/wall_portrait.jpg" alt="" class="max" />
-				<img id="gradient" src="../lib/images/demo/gradient.png" alt="" />
-				<div class="in-slide-content" style="display:none;">
-					<p>Remember, you are not limited to image elements.  You can display other HTML too.</p>
-					<p><a href="http://blog.aaronvanderzwan.com/2011/11/maximage-2-0-beta1-release/" target="_blank" style="font-weight:bold">More info >></a></p>
-				</div>
-			</div>
-			<div class="video">
-				<img src="../lib/images/demo/kissing.jpg" alt="" />
-				<div class="in-slide-content light-text smaller-text">
-					<p>Maximage does not assume anything about your in-slide HTML.  So you can resize HTML5 videos to fill the screen (using your own JS) or you can place it on the page with a standard maximized background image.</p>
-					<p><a href="http://blog.aaronvanderzwan.com/2011/11/maximage-2-0-beta1-release/" target="_blank" style="font-weight:bold">More info >></a></p>
-				</div>
-				<video id="html5video" autoplay="autoplay" loop="loop" muted="muted" controls="controls" poster="http://sandbox.thewikies.com/vfe-generator/images/big-buck-bunny_poster.jpg" width="640" height="360">
-					<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4" />
-					<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm" type="video/webm" />
-					<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv" type="video/ogg" />
-					Your browser does not support the video tag.
-				</video>
-				
-				<script type="text/javascript">
-					// IE Workaround for muted="muted"
-					// $('#html5video')[0].volume = 0;
-				</script>
-			</div>
-			<img src="../lib/images/demo/coalesse.jpg" alt="Coalesse" data-href="http://www.google.com/" />
-			<img src="../lib/images/demo/laughing.jpg" alt="" />
-			<div class="video">
-				<img src="../lib/images/demo/pattern.jpg" alt="" />
-				<iframe width="100%" height="100%" src="http://www.youtube.com/embed/KVwSP51KVO8?wmode=opaque" frameborder="0" class="youtube-video" allowfullscreen></iframe>
-			</div>
-			<img src="../lib/images/demo/roof_shooting.jpg" alt="" />
-			<img src="../lib/images/demo/man.jpg" alt="" />
-			<img src="../lib/images/demo/coffee_shop.jpg" alt="" />
-			<img src="../lib/images/demo/gas_station.jpg" alt="" />
-		</div>
+		<a href="" class="add" data-url="ajaxData1.html">Add Set 1</a>
+		<a href="" class="add" data-url="ajaxData2.html">Add Set 2</a>
+		<div id="ajax"></div>
 		
 		<script src='//ajax.googleapis.com/ajax/libs/jquery/1/jquery.js'></script>
 		<script src="../lib/js/jquery.cycle.all.js" type="text/javascript" charset="utf-8"></script>
@@ -195,30 +160,40 @@
 		
 		<script type="text/javascript" charset="utf-8">
 			$(function(){
-				$('#maximage').maximage({
-					cycleOptions: {
-						fx: 'fade',
-						speed: 1000, // Has to match the speed for CSS transitions in jQuery.maximage.css (lines 30 - 33)
-						timeout: 0,
-						prev: '#arrow_left',
-						next: '#arrow_right',
-						pause: 1,
-						after: function(last,current){
-							console.log($(current).find('.light-text').html());
-						}
-					},
-					onFirstImageLoaded: function(){
-						jQuery('#cycle-loader').hide();
-						jQuery('#maximage').fadeIn('fast');
-					},
-					cssBackgroundSize: false // This option is causing choppiness in retina display safari
+				$('.add').click(function(e){
+					e.preventDefault(); 
+					
+					var $url = $(this).data('url');
+					$.ajax({
+					    url: $url,
+					    success: function(data){
+					        //Load the href
+					        $('#ajax').html(data);
+							
+							$('#maximage').maximage({
+								cycleOptions: {
+									fx: 'fade',
+									speed: 3000, // Has to match the speed for CSS transitions in jQuery.maximage.css (lines 30 - 33)
+									timeout: 0,
+									prev: '#arrow_left',
+									next: '#arrow_right',
+									pause: 1
+								},
+								onFirstImageLoaded: function(){
+									jQuery('#cycle-loader').hide();
+									jQuery('#maximage').fadeIn('fast');
+								},
+								cssBackgroundSize: false // This option is causing choppiness in retina display safari
+							});
+
+							// Helper function to Fill and Center the HTML5 Video
+							jQuery('#html5video').maximage('maxcover');
+
+							// To show it is dynamic html text
+							jQuery('.in-slide-content').delay(1200).fadeIn();
+					    }
+					});	
 				});
-	
-				// Helper function to Fill and Center the HTML5 Video
-				jQuery('#html5video').maximage('maxcover');
-	
-				// To show it is dynamic html text
-				jQuery('.in-slide-content').delay(1200).fadeIn();
 			});
 		</script>
 		

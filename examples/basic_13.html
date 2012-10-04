@@ -39,6 +39,25 @@
 			#logo img {
 				width:100%;
 			}
+
+			#arrow_left, #arrow_right {
+				bottom:30px;
+				height:67px;
+				position:absolute;
+				right:30px;
+				width:36px;
+				z-index:1000;
+			}
+			#arrow_left {
+				right:86px;
+			}
+
+			#arrow_left:hover, #arrow_right:hover {
+				bottom:29px;
+			}
+			#arrow_left:active, #arrow_right:active {
+				bottom:28px;
+			}
 			
 		</style>
 		
@@ -51,6 +70,8 @@
 	</head>
 	<body>
 		<a href="http://blog.aaronvanderzwan.com/maximage-2-0/" id="logo"><img src="../lib/images/demo/logo.png" alt="MaxImage: Uses jQuery Cycle Plugin to create background slideshows" /></a>
+		<a href="" id="arrow_left"><img src="../lib/images/demo/arrow_left.png" alt="Slide Left" /></a>
+		<a href="" id="arrow_right"><img src="../lib/images/demo/arrow_right.png" alt="Slide Right" /></a>
 		
 		<div id="maximage">
 			<img src="../lib/images/demo/wall_portrait.jpg" alt="" width="1400" height="1050" />
@@ -59,21 +80,13 @@
 			<img src="../lib/images/demo/roof_shooting.jpg" alt="" width="2048" height="1536" />
 			<img src="../lib/images/demo/man.jpg" alt="" width="2048" height="1536" />
 			<img src="../lib/images/demo/coffee_shop.jpg" alt="" width="2048" height="1536" />
-			<img src="../lib/images/demo/gas_station.jpg" alt="" width="2048" height="1536" />
-			<img src="../lib/images/demo/wall_portrait.jpg" alt="" width="1400" height="1050" />
-			<img src="../lib/images/demo/coalesse.jpg" alt="Coalesse" width="1400" height="1050" />
-			<img src="../lib/images/demo/laughing.jpg" alt="" width="1400" height="1050" />
-			<img src="../lib/images/demo/roof_shooting.jpg" alt="" width="2048" height="1536" />
-			<img src="../lib/images/demo/man.jpg" alt="" width="2048" height="1536" />
-			<img src="../lib/images/demo/coffee_shop.jpg" alt="" width="2048" height="1536" />
-			<img src="../lib/images/demo/gas_station.jpg" alt="" width="2048" height="1536" />
-			<img src="../lib/images/demo/wall_portrait.jpg" alt="" width="1400" height="1050" />
-			<img src="../lib/images/demo/coalesse.jpg" alt="Coalesse" width="1400" height="1050" />
-			<img src="../lib/images/demo/laughing.jpg" alt="" width="1400" height="1050" />
-			<img src="../lib/images/demo/roof_shooting.jpg" alt="" width="2048" height="1536" />
-			<img src="../lib/images/demo/man.jpg" alt="" width="2048" height="1536" />
-			<img src="../lib/images/demo/coffee_shop.jpg" alt="" width="2048" height="1536" />
-			<img src="../lib/images/demo/gas_station.jpg" alt="" width="2048" height="1536" />
+			<img src="../lib/images/demo/gas_station.jpg" width="2048" height="1536" alt="Gas Station">
+			<img src="../lib/images/demo/golf_sunset.jpg" width="2048" height="1536" alt="Golf Sunset">
+			<img src="../lib/images/demo/oldladyb.jpg" width="1166" height="1400" alt="Oldladyb">
+			<img src="../lib/images/demo/oldmanb.jpg" width="1422" height="1800" alt="Oldmanb">
+			<img src="../lib/images/demo/oldmantatoo.jpg" width="800" height="1200" alt="Oldmantatoo">
+			<img src="../lib/images/demo/pattern.jpg" width="2048" height="1536" alt="Pattern">
+			<img src="../lib/images/demo/tajik_man.jpg" width="1300" height="871" alt="Tajik Man">
 		</div>
 		
 		<script src='//ajax.googleapis.com/ajax/libs/jquery/1/jquery.js'></script>
@@ -81,10 +94,22 @@
 		<script src="../lib/js/jquery.maximage.js" type="text/javascript" charset="utf-8"></script>
 		
 		<script type="text/javascript" charset="utf-8">
-$(function(){
-	// Trigger maximage
-	$('#maximage').maximage();
-});
+			$(function(){
+				// Trigger maximage
+				$('#maximage').maximage({
+					cycleOptions: {
+						fx: 'fade',
+						speed: 1000, // Has to match the speed for CSS transitions in jQuery.maximage.css (lines 30 - 33)
+						timeout: 0,
+						prev: '#arrow_left',
+						next: '#arrow_right',
+						pause: 1,
+						after: function(last,current){
+							// console.log($(current).find('.light-text').html());
+						}
+					}
+				});
+			});
 		</script>
 		
 		<!-- DON'T USE THIS: Insert Google Analytics code here -->

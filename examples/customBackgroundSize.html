@@ -135,60 +135,47 @@
 		<a href="http://www.aaronvanderzwan.com/blog/maximage-2-0/" id="logo"><img src="../lib/images/demo/logo.png" alt="MaxImage: Uses jQuery Cycle Plugin to create background slideshows" /></a>
 		
 		<div id="maximage">
-			<img src="../lib/images/demo/oldmanb.jpg" alt="" width="1422" height="1800" />
-			<img src="../lib/images/demo/oldmantatoo.jpg" alt="" width="800" height="1200" />
-			<img src="../lib/images/demo/oldladyb.jpg" alt="" width="1166" height="1400" />
+			<div><img src="../lib/images/demo/oldmanb.jpg" alt="" width="1422" height="1800" /></div>
+				<div>
+			<img src="../lib/images/demo/oldmantatoo.jpg" alt="" width="800" height="1200" /></div>
+						<div>
+			<img src="../lib/images/demo/oldladyb.jpg" alt="" width="1166" height="1400" /></div>
 		</div>
 		
 		<script src='//ajax.googleapis.com/ajax/libs/jquery/1/jquery.js'></script>
 		<script src="../lib/js/jquery.cycle.all.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../lib/js/jquery.maximage.js" type="text/javascript" charset="utf-8"></script>
-		
-		<style type="text/css" media="screen">
-			/*CSS Transition speed has to match js cycle speed*/
-			div.mc-image {
-				-webkit-transition: all 1s ease-in-out; 
-			    -moz-transition: all 1s ease-in-out; 
-			    -o-transition: all 1s ease-in-out; 
-			    transition: all 1s ease-in-out;
-				
-				-webkit-background-size: cover;
-				-moz-background-size: cover;
-				-o-background-size: cover;
-				background-size: cover;
-			}
-		</style>
 		<script type="text/javascript" charset="utf-8">
-$(function(){
-	// Trigger maximage
-	jQuery('#maximage').maximage({
-		cssBackgroundSize: false,
-		backgroundSize: function( $item ){
-			// Contain Portrait
-			if ($item.data('h') > $item.data('w')) {
-				if ($.Window.data('w') / $.Window.data('h') < $item.data('ar')) {
-					$item
-						.height(($.Window.data('w') / $item.data('ar')).toFixed(0))
-						.width($.Window.data('w'));
-				} else {
-					$item
-						.height($.Window.data('h'))
-						.width(($.Window.data('h') * $item.data('ar')).toFixed(0));
-				}
-			} else {
-				if ($.Window.data('w') / $.Window.data('h') < $item.data('ar')) {
-					$item
-						.height($.Window.data('h'))
-						.width(($.Window.data('h') * $item.data('ar')).toFixed(0));
-				} else {
-					$item
-						.height(($.Window.data('w') / $item.data('ar')).toFixed(0))
-						.width($.Window.data('w'));
-				}
-			}
-		}
-	});
-});
+			$(function(){
+				// Trigger maximage
+				jQuery('#maximage').maximage({
+					cssBackgroundSize: false,
+					backgroundSize: function( $item ){
+						// Contain Portrait
+						if ($item.data('h') > $item.data('w')) {
+							if ($.Window.data('w') / $.Window.data('h') < $item.data('ar')) {
+								$item
+									.height(($.Window.data('w') / $item.data('ar')).toFixed(0))
+									.width($.Window.data('w'));
+							} else {
+								$item
+									.height($.Window.data('h'))
+									.width(($.Window.data('h') * $item.data('ar')).toFixed(0));
+							}
+						} else {
+							if ($.Window.data('w') / $.Window.data('h') < $item.data('ar')) {
+								$item
+									.height($.Window.data('h'))
+									.width(($.Window.data('h') * $item.data('ar')).toFixed(0));
+							} else {
+								$item
+									.height(($.Window.data('w') / $item.data('ar')).toFixed(0))
+									.width($.Window.data('w'));
+							}
+						}
+					}
+				});
+			});
 		</script>
 		
 		<!-- DON'T USE THIS: Insert Google Analytics code here -->

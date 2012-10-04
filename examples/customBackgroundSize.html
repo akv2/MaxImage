@@ -149,7 +149,7 @@
 			$(function(){
 				// Trigger maximage
 				jQuery('#maximage').maximage({
-					cssBackgroundSize: false,
+					cssBackgroundSize: false, // We don't want to use background-size:cover for our custom size
 					backgroundSize: function( $item ){
 						// Contain Portrait
 						if ($item.data('h') > $item.data('w')) {

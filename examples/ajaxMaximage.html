@@ -168,7 +168,7 @@
 					    url: $url,
 					    success: function(data){
 					        //Load the href
-					        $('#ajax').html(data);
+					        $('#ajax').html('').html(data); // To be sure caching clears, we empty #ajax, before filling it again
 							
 							$('#maximage').maximage({
 								cycleOptions: {

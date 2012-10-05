@@ -151,11 +151,18 @@
 		
 		<img id="cycle-loader" src="../lib/images/ajax-loader.gif" />
 		<div id="maximage">
-			<div class="first-item" data-item="item thing">
-				<img src="../lib/images/demo/wall_portrait.jpg" alt="" class="max" />
+			<div>
+				<img src="../lib/images/demo/wall_portrait.jpg" alt="" />
 				<img id="gradient" src="../lib/images/demo/gradient.png" alt="" />
 				<div class="in-slide-content" style="display:none;">
 					<p>Remember, you are not limited to image elements.  You can display other HTML too.</p>
+					<p><a href="http://blog.aaronvanderzwan.com/2011/11/maximage-2-0-beta1-release/" target="_blank" style="font-weight:bold">More info >></a></p>
+				</div>
+			</div>
+			<div>
+				<img src="../lib/images/demo/tajik_man.jpg" alt="" />
+				<div class="in-slide-content" style="display:none;">
+					<p>A second slide with some HTML content.</p>
 					<p><a href="http://blog.aaronvanderzwan.com/2011/11/maximage-2-0-beta1-release/" target="_blank" style="font-weight:bold">More info >></a></p>
 				</div>
 			</div>
@@ -204,14 +211,14 @@
 						next: '#arrow_right',
 						pause: 1,
 						after: function(last,current){
-							console.log($(current).find('.light-text').html());
+							// console.log($(current).find('.light-text').html());
 						}
 					},
 					onFirstImageLoaded: function(){
 						jQuery('#cycle-loader').hide();
 						jQuery('#maximage').fadeIn('fast');
 					},
-					cssBackgroundSize: false // This option is causing choppiness in retina display safari
+					//cssBackgroundSize: false // This option is causing choppiness in retina display safari
 				});
 	
 				// Helper function to Fill and Center the HTML5 Video

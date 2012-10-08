@@ -1,4 +1,4 @@
-## Currently at Version 2.0.6
+## Currently at Version 2.0.7
 
 Documentation can be found at:
 http://blog.aaronvanderzwan.com/2012/07/maximage-2-0/

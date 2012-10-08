@@ -6,10 +6,13 @@ http://blog.aaronvanderzwan.com/2012/07/maximage-2-0/
 Full demo can be found at:
 http://www.aaronvanderzwan.com/maximage/2.0/
 
+## Known Issues:
+* HTML5 video fallbacks for IE7 & IE8 currently do not fill the screen.  I am working on this currently, but if this is important to you, please use another browser for the time being and check back for updates as this has proven more complex than was expected.
+
 ## Changelog:
 
 Version 2.0.7:
-* I have completely rewritten the Old.preload() method to avoid a Stack Overflow bug found in IE7&8 if there are more than 13 slides.
+* I have completely rewritten the Old.preload() method to avoid a Stack Overflow bug found in IE7 & IE8 if there are more than 13 slides.
 
 Version 2.0.6:
 * Add ability for backgroundSize option to be passed as a function to the plugin.  This way you can completely customize how you want the image to resize.  See example @ http://www.aaronvanderzwan.com/maximage/2.0/#CustomBGSize

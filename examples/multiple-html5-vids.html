@@ -161,32 +161,16 @@
 					<source src="http://www.aaronvanderzwan.com/maximage/2.0/lib/video/kissing.mp4" type="video/mp4" />
 					<source src="http://www.aaronvanderzwan.com/maximage/2.0/lib/video/kissing.webm" type="video/webm" />
 					<source src="http://www.aaronvanderzwan.com/maximage/2.0/lib/video/kissing.ogv" type="video/ogg" />
-					<object type="application/x-shockwave-flash" data="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" width="320" height="240">
-						<param name="movie" value="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" />
-						<param name="allowFullScreen" value="true" />
-						<param name="wmode" value="transparent" />
-						<param name="flashVars" value="config={'playlist':['http%3A%2F%2Fwww.aaronvanderzwan.com%2Fmaximage%2F2.0%2Flib%2Fimages%2Fdemo%2Fkissing.jpg',{'url':'http%3A%2F%2Fwww.aaronvanderzwan.com%2Fmaximage%2F2.0%2Flib%2Fvideo%2Fkissing.mp4','autoPlay':true}]}" />
-						<img alt="Big Buck Bunny" src="http://www.aaronvanderzwan.com/maximage/2.0/lib/images/demo/kissing.jpg" width="320" height="240" title="No video playback capabilities, please download the video below" />
-					</object>
+					Your browser does not support HTML5 videos.
 				</video>
 			</div>
 			<div>
-				<img src="http://sandbox.thewikies.com/vfe-generator/images/big-buck-bunny_poster.jpg" alt="" />
-				<div class="in-slide-content light-text smaller-text">
-					<p>Maximage does not assume anything about your in-slide HTML.  So you can resize HTML5 videos to fill the screen (using your own JS) or you can place it on the page with a standard maximized background image.</p>
-					<p><a href="http://blog.aaronvanderzwan.com/2011/11/maximage-2-0-beta1-release/" target="_blank" style="font-weight:bold">More info >></a></p>
-				</div>	
-				<video class="html5video" autoplay="autoplay" loop="loop" muted="muted" controls="controls" poster="http://sandbox.thewikies.com/vfe-generator/images/big-buck-bunny_poster.jpg" width="640" height="360">
+				<img src="http://sandbox.thewikies.com/vfe-generator/images/big-buck-bunny_poster.jpg" alt="" />	
+				<video class="html5video" controls="controls" muted="muted" poster="http://sandbox.thewikies.com/vfe-generator/images/big-buck-bunny_poster.jpg" width="640" height="360">
 					<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4" />
 					<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm" type="video/webm" />
 					<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv" type="video/ogg" />
-					<object type="application/x-shockwave-flash" data="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" width="640" height="360">
-						<param name="movie" value="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" />
-						<param name="allowFullScreen" value="true" />
-						<param name="wmode" value="transparent" />
-						<param name="flashVars" value="config={'playlist':['http%3A%2F%2Fsandbox.thewikies.com%2Fvfe-generator%2Fimages%2Fbig-buck-bunny_poster.jpg',{'url':'http%3A%2F%2Fclips.vorwaerts-gmbh.de%2Fbig_buck_bunny.mp4','autoPlay':false}]}" />
-						<img alt="Big Buck Bunny" src="http://sandbox.thewikies.com/vfe-generator/images/big-buck-bunny_poster.jpg" width="640" height="360" title="No video playback capabilities, please download the video below" />
-					</object>
+					Your browser does not support HTML5 videos.
 				</video>
 			</div>
 			<img src="../lib/images/demo/coalesse.jpg" alt="Coalesse" data-href="http://www.google.com/" />
@@ -201,7 +185,7 @@
 			<img src="../lib/images/demo/gas_station.jpg" alt="" />
 		</div>
 		
-		<script src='//ajax.googleapis.com/ajax/libs/jquery/1/jquery.js'></script>
+		<script src='http:http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js'></script>
 		<script src="../lib/js/jquery.cycle.all.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../lib/js/jquery.maximage.js" type="text/javascript" charset="utf-8"></script>
 		
@@ -216,20 +200,22 @@
 						next: '#arrow_right',
 						pause: 1,
 						after: function(last,current){
-							if($(last).find('video').length > 0) $(last).find('video')[0].pause();
-							if($(current).find('video').length > 0) $(current).find('video')[0].play();
+							if(!$.browser.msie){
+								if($(last).find('video').length > 0) $(last).find('video')[0].pause();
+								if($(current).find('video').length > 0) $(current).find('video')[0].play();
+							}
 						}
 					},
 					onFirstImageLoaded: function(){
 						jQuery('#cycle-loader').hide();
 						jQuery('#maximage').fadeIn('fast');
 					},
-					//cssBackgroundSize: false // This option is causing choppiness in retina display safari
+					debug:true
 				});
-	
+					
 				// Helper function to Fill and Center the HTML5 Video
 				jQuery('.html5video').maximage('maxcover');
-	
+					
 				// To show it is dynamic html text
 				jQuery('.in-slide-content').delay(1200).fadeIn();
 			});

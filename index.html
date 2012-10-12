@@ -48,12 +48,13 @@
 			.special p {color:#222;font-family:georgia;font-size:38px;line-height:1.3em;margin:40px 0 0;text-align:center;text-shadow:1px 1px #fff;}
 			.special .set2 {font-size:24px;margin:0 0 20px;}
 			
-			.centered {margin:0 auto 80px;width:500px;}
+			.centered {margin:0 auto 80px;width:560px;}
 			
 			.example {margin-bottom:160px;}
 			.example .leftcol,
 			.example .rightcol {float:left;margin-right:20px;width:480px;}
 			.example .rightcol {margin-right:0;}
+			.example .content {margin-bottom:20px;}
 			.example .code {clear:both;}
 			
 			#back-to-top {bottom:20px;position:fixed;right:20px;}
@@ -87,6 +88,7 @@
 					<a class="btn" href="#Customized">Customized</a>
 					<a class="btn" href="#FillElement">FillElement</a>
 					<a class="btn" href="#CustomBGSize">Custom Background Size</a>
+					<a class="btn" href="#Offset">Offset</a>
 					<a class="btn" href="#html5Video">HTML5 Video</a>
 				</div>
 			</div>
@@ -118,8 +120,8 @@
 						<h2><a href="">Customized Example</a></h2>
 					</div>
 					<div class="content">
-						<p>This demo explains how easy it is to use <a href="http://jquery.malsup.com/cycle/options.html" target="_blank">jQuery Cycle options</a> as well as some of the best of Maximage2.  You can see how callback functions are used as well as speed, fx, timeout, paging and really any other jQuery Cycle option.</p>
-						<p>This demo also uses Maximage2's custom helper function that allows for any element in the slideshow to be maximized like the background images in the slides.  In this case we maximize an HTML5 video in our slideshow.</p>
+						<p>This demo explains how easy it is to use <a href="http://jquery.malsup.com/cycle/options.html" target="_blank">jQuery Cycle options</a> as well as some of the best of Maximage 2.0.  You can see how callback functions are used as well as speed, fx, timeout, paging and really any other jQuery Cycle option.</p>
+						<p>This demo also uses Maximage 2.0's custom helper function that allows for any element in the slideshow to be maximized like the background images in the slides.  In this case we maximize an HTML5 video in our slideshow as well as a Youtube Video.</p>
 						<p><i class="icon-share icon-white"></i> <a href='examples/customized.html' target="_blank">View Example</a></p>
 					</div>
 				</div>
@@ -172,6 +174,30 @@
 					<script src="https://gist.github.com/3307410.js"> </script>
 				</div>
 			</div>
+
+
+			<a name="Offset"></a>
+			<div class="example offset-example">
+				<div class="leftcol">
+					<div class="page-header">
+						<h2><a href="">Using Offsets</a></h2>
+					</div>
+					<div class="content">
+						<p>Because the first rule of Maximage 2.0 is to try to remain hands off and out of your way, the built in support for offsets have been dropped with version 2.0.  This doesn't mean they aren't possible.  With a little elbow grease they can still be accomplished (and are better).</p>
+						<p>What I am doing with the below code is creating curtains / offsets that live in front of the slideshow.  I call these curtains.  I have done this with the HTML and CSS below for 100px offsets on the top, right, bottom and left edges of the screen.</p>
+						<p>Once we have our curtains up, the slideshow is still resizing to the full window and we want to have it maximize within the viewable area... our window size minus our offsets.  For this reason you have to customize the function that resizes the window. We can do that with the backgroundSize option that gets passed to Maximage.  Just set your verticalOffset and horizontalOffset in backgroundSize (JS example below) to size your slideshow images within the viewable area.</p>
+						<p><i class="icon-share icon-white"></i> <a href='examples/offset.html' target="_blank">View Example</a></p>
+					</div>
+				</div>
+				<div class="rightcol">
+					<img src="lib/images/ss-offset.png" alt="Offset Example Screenshot" width="466" height="376" />
+				</div>
+				<div class="code">
+					<script src="https://gist.github.com/3880710.js?file=maximage-offset.html"></script>
+					<script src="https://gist.github.com/3880710.js?file=maximage-offset.css"></script>
+					<script src="https://gist.github.com/3880710.js?file=maximage-offset.js"></script>
+				</div>
+			</div>
 			
 			<a name="html5Video"></a>
 			<div class="example fillelement-example">
@@ -180,7 +206,8 @@
 						<h2><a href="">Fullscreen HTML5 Video</a></h2>
 					</div>
 					<div class="content">
-						<p>Maximage2 can be used as a tool to make almost anything a fullscreen background element very easily.  This example shows how it can be used to create a background HTML5 video.  It even maximizes the flash fallback so it works back to IE7.</p>
+						<p>Maximage2 can be used as a tool to make almost anything a fullscreen background element very easily.  This example shows how it can be used to create a background HTML5 video.</p>  
+						<p><strong>NOTE: HTML5 video fallbacks for IE7 &amp; IE8 currently do not fill the screen within a slideshow.  I am working on this currently, but if this is important to you, please use another slideshow for the time being and check back for updates as this has proven more complex than was expected.</strong></p>
 						<p><i class="icon-share icon-white"></i> <a href='examples/html5video.html' target="_blank">View Example</a></p>
 					</div>
 				</div>

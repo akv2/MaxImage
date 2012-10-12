@@ -8,7 +8,7 @@
 	<head>
 		<meta charset='utf-8' />
 		<meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
-		<title>Custom Background Size Function Example | MaxImage 2.0</title>
+		<title>Offset Example | MaxImage 2.0</title>
 		
 		<meta content='jQuery Plugin to make jQuery Cycle Plugin work as a fullscreen background image slideshow' name='description' />
 		<meta content='Aaron Vanderzwan' name='author' />
@@ -24,48 +24,12 @@
 		
 		<style type="text/css" media="screen">			
 			#maximage {
-				display:none;
-				position:fixed !important;
+				display:none;/* Only use this if you fade it in again after the images load */
 			}
 			
-			/*I want to style my pager*/
-			#cycle-nav {
-				position:absolute;
-				right:10px;
-				top:10px;
-			}
-			#cycle-nav ul {
-				list-style-type:none;
-			}
-			#cycle-nav ul li {
-				border:1px solid #ffffcc;
-				float:left;
-				margin:4px;
-			}
-			#cycle-nav ul li a {
-				background:#ffffcc;
-				float:left;
-				height:10px;
-				margin:2px;
-				width:10px;
-			}
-			#cycle-nav ul li.activeSlide {
-				border:1px solid #ff6600;
-			}
-			
-			/*Set my gradient above all images*/
-			#gradient {
-				left:0;
-				height:100%;
-				position:absolute;
-				top:0;
-				width:100%;
-				z-index:999;
-			}
-			
-			/*Set my logo in bottom left*/
+			/*Set my logo in bottom center*/
 			#logo {
-				bottom:10px;
+				bottom:20px;
 				height:auto;
 				left:0;
 				position:absolute;
@@ -74,7 +38,7 @@
 				z-index:1000;
 			}
 			#logo img {
-				height:76px;
+				height:56px;
 			}
 		</style>
 		
@@ -126,19 +90,19 @@
 				width:100px;
 			}
 		</style>
-		<div class="curtains">
-			<span class="top"></span>
-			<span class="right"></span>
-			<span class="bottom"></span>
-			<span class="left"></span>
-		</div>
-		
-		<div id="maximage">
-			<img src="../lib/images/demo/oldmanb.jpg" width="1422" height="1800" alt="Oldmanb">
-			<img src="../lib/images/demo/test1.jpg" width="1095" height="730" alt="Test1">
-			<img src="../lib/images/demo/test2.jpg" width="1158" height="869" alt="Test2">
-			<img src="../lib/images/demo/test3.jpg" width="1600" height="1200" alt="Test3">
-		</div>
+<div class="curtains">
+	<span class="top"></span>
+	<span class="right"></span>
+	<span class="bottom"></span>
+	<span class="left"></span>
+</div>
+
+<div id="maximage">
+	<img src="../lib/images/demo/oldmanb.jpg" width="1422" height="1800" alt="Oldmanb">
+	<img src="../lib/images/demo/test1.jpg" width="1095" height="730" alt="Test1">
+	<img src="../lib/images/demo/test2.jpg" width="1158" height="869" alt="Test2">
+	<img src="../lib/images/demo/test3.jpg" width="1600" height="1200" alt="Test3">
+</div>
 		
 		<script src='http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js'></script>
 		<script src="../lib/js/jquery.cycle.all.js" type="text/javascript" charset="utf-8"></script>
@@ -149,15 +113,17 @@
 				jQuery('#maximage').maximage({
 					cssBackgroundSize: false, // We don't want to use background-size:cover for our custom size
 					backgroundSize: function( $item ){
-						// Contain Portrait
-						if($.Window.data('w') / $.Window.data('h') < $item.data('ar')){
+						var verticalOffset = 200, // Top offset + Bottom offset
+							horizontalOffset = 200; // Left offset + Right offset
+			
+						if($.Window.data('w') / $.Window.data('h') < $item.data('ar')){ // Image size based on height
 							$item
-								.height($.Window.data('h') - 200)
-								.width((($.Window.data('h') - 200) * $item.data('ar')).toFixed(0));
-						}else{
+								.height($.Window.data('h') - verticalOffset)
+								.width((($.Window.data('h') - verticalOffset) * $item.data('ar')).toFixed(0));
+						}else{ // Image size based on width
 							$item
-								.height((($.Window.data('w') - 200) / $item.data('ar')).toFixed(0))
-								.width($.Window.data('w') - 200);
+								.height((($.Window.data('w') - horizontalOffset) / $item.data('ar')).toFixed(0))
+								.width($.Window.data('w') - horizontalOffset);
 						}
 					},
 					onImagesLoaded: function(){

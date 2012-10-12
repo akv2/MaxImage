@@ -39,33 +39,8 @@
 			
 			/*I want to avoid jumpiness as the JS loads, so I initially hide my cycle*/
 			#maximage {
-				display:none;
+				display:none;/* Only use this if you fade it in again after the images load */
 				position:fixed !important;
-			}
-			
-			/*I want to style my pager*/
-			#cycle-nav {
-				position:absolute;
-				right:10px;
-				top:10px;
-			}
-			#cycle-nav ul {
-				list-style-type:none;
-			}
-			#cycle-nav ul li {
-				border:1px solid #ffffcc;
-				float:left;
-				margin:4px;
-			}
-			#cycle-nav ul li a {
-				background:#ffffcc;
-				float:left;
-				height:10px;
-				margin:2px;
-				width:10px;
-			}
-			#cycle-nav ul li.activeSlide {
-				border:1px solid #ff6600;
 			}
 			
 			/*Set my gradient above all images*/
@@ -128,8 +103,8 @@
 				z-index:9999; /* Show above .gradient */
 				text-shadow: 0 1px 0 #fff;
 			}
-			.light-text {color:#f0f0f0;text-shadow: 0 1px 0 #666;}
-			.smaller-text {font-size:40px;}
+			.light-text {color:#ddd;text-shadow: 0 1px 0 #666;}
+			.smaller-text {font-size:30px;}
 			.youtube-video, video {
 				left:0;
 				position:absolute;
@@ -159,24 +134,18 @@
 					<p><a href="http://blog.aaronvanderzwan.com/2011/11/maximage-2-0-beta1-release/" target="_blank" style="font-weight:bold">More info >></a></p>
 				</div>
 			</div>
-			<div>
-				<img src="../lib/images/demo/tajik_man.jpg" alt="" />
-				<div class="in-slide-content" style="display:none;">
-					<p>A second slide with some HTML content.</p>
-					<p><a href="http://blog.aaronvanderzwan.com/2011/11/maximage-2-0-beta1-release/" target="_blank" style="font-weight:bold">More info >></a></p>
-				</div>
-			</div>
 			<div class="video">
-				<img src="../lib/images/demo/kissing.jpg" alt="" />
+				<img src="../lib/images/demo/pattern.jpg" alt="" />
 				<div class="in-slide-content light-text smaller-text">
-					<p>Maximage does not assume anything about your in-slide HTML.  So you can resize HTML5 videos to fill the screen (using your own JS) or you can place it on the page with a standard maximized background image.</p>
+					<p>Maximage does not assume anything about your in-slide HTML.  So you can resize HTML5 videos to fill the screen (using the Maximage helper function) or you can place it on the page with a standard maximized background image. PLEASE NOTE: HTML5 flash fallback does not work for IE7 &amp; IE8 in slideshows at this time.  It has proven more difficult than was expected.</p>
 					<p><a href="http://blog.aaronvanderzwan.com/2011/11/maximage-2-0-beta1-release/" target="_blank" style="font-weight:bold">More info >></a></p>
 				</div>
-				<video id="html5video" autoplay="autoplay" loop="loop" muted="muted" controls="controls" poster="http://sandbox.thewikies.com/vfe-generator/images/big-buck-bunny_poster.jpg" width="640" height="360">
+				<!-- "Video For Everybody" http://camendesign.com/code/video_for_everybody -->
+				<video controls="controls" muted="muted" poster="http://sandbox.thewikies.com/vfe-generator/images/big-buck-bunny_poster.jpg" width="640" height="360">
 					<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4" />
 					<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm" type="video/webm" />
 					<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv" type="video/ogg" />
-					Your browser does not support the video tag.
+					Your browser does not support HTML5 videos.
 				</video>
 			</div>
 			<img src="../lib/images/demo/coalesse.jpg" alt="Coalesse" data-href="http://www.google.com/" />
@@ -204,7 +173,19 @@
 						timeout: 0,
 						prev: '#arrow_left',
 						next: '#arrow_right',
-						pause: 1
+						pause: 1,
+						before: function(last,current){
+							if(!$.browser.msie){
+								// Start HTML5 video when you arrive
+								if($(current).find('video').length > 0) $(current).find('video')[0].play();
+							}
+						},
+						after: function(last,current){
+							if(!$.browser.msie){
+								// Pauses HTML5 video when you leave it
+								if($(last).find('video').length > 0) $(last).find('video')[0].pause();
+							}
+						}
 					},
 					onFirstImageLoaded: function(){
 						jQuery('#cycle-loader').hide();
@@ -213,7 +194,7 @@
 				});
 	
 				// Helper function to Fill and Center the HTML5 Video
-				jQuery('#html5video').maximage('maxcover');
+				jQuery('video,object').maximage('maxcover');
 	
 				// To show it is dynamic html text
 				jQuery('.in-slide-content').delay(1200).fadeIn();

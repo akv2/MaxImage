@@ -7,7 +7,7 @@ Full demo can be found at:
 http://www.aaronvanderzwan.com/maximage/2.0/
 
 ## Known Issues:
-* HTML5 video fallbacks for IE7 & IE8 currently do not fill the screen.  I am working on this currently, but if this is important to you, please use another browser for the time being and check back for updates as this has proven more complex than was expected.
+* HTML5 video fallbacks for IE7 & IE8 currently do not fill the screen within a slideshow.  I am working on this currently, but if this is important to you, please use another slideshow for the time being and check back for updates as this has proven more complex than was expected.
 
 ## Changelog:
 

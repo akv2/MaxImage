@@ -12,11 +12,11 @@ http://www.aaronvanderzwan.com/maximage/2.0/
 ## Changelog:
 
 Version 2.0.7:
-* I have completely rewritten the Old.preload() method to avoid a Stack Overflow bug found in IE7 & IE8 if there are more than 13 slides.
+* [Fixed] I have completely rewritten the Old.preload() method to avoid a Stack Overflow bug found in IE7 & IE8 if there are more than 13 slides.
 
 Version 2.0.6:
-* Add ability for backgroundSize option to be passed as a function to the plugin.  This way you can completely customize how you want the image to resize.  See example @ http://www.aaronvanderzwan.com/maximage/2.0/#CustomBGSize
-* Added a landing page with code explanations for some examples.
+* [Added] Add ability for backgroundSize option to be passed as a function to the plugin.  This way you can completely customize how you want the image to resize.  See example @ http://www.aaronvanderzwan.com/maximage/2.0/#CustomBGSize
+* [Added] Added a landing page with code explanations for some examples.
 
 Version 2.0.5:
 * Now you can call maximage on any object and it will fill and center it (pass it a string, 'maxcover', 'maxcontain', 'fill' or 'center').  This makes it really easy to have any visual element be the fullscreen background element of the slideshow (HTML5 video, etc). A small explanation / tutorial can be found at: http://blog.aaronvanderzwan.com/forums/topic/maximage-cover-helper-function/

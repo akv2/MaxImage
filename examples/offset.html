@@ -28,15 +28,53 @@
 				position:fixed !important;
 			}
 			
+			/*I want to style my pager*/
+			#cycle-nav {
+				position:absolute;
+				right:10px;
+				top:10px;
+			}
+			#cycle-nav ul {
+				list-style-type:none;
+			}
+			#cycle-nav ul li {
+				border:1px solid #ffffcc;
+				float:left;
+				margin:4px;
+			}
+			#cycle-nav ul li a {
+				background:#ffffcc;
+				float:left;
+				height:10px;
+				margin:2px;
+				width:10px;
+			}
+			#cycle-nav ul li.activeSlide {
+				border:1px solid #ff6600;
+			}
+			
+			/*Set my gradient above all images*/
+			#gradient {
+				left:0;
+				height:100%;
+				position:absolute;
+				top:0;
+				width:100%;
+				z-index:999;
+			}
+			
 			/*Set my logo in bottom left*/
 			#logo {
-				bottom:30px;
+				bottom:10px;
 				height:auto;
 				left:0;
 				position:absolute;
 				width:100%;
 				text-align:center;
 				z-index:1000;
+			}
+			#logo img {
+				height:76px;
 			}
 		</style>
 		
@@ -50,10 +88,56 @@
 	<body>
 		<a href="http://www.aaronvanderzwan.com/blog/maximage-2-0/" id="logo"><img src="../lib/images/demo/logo.png" alt="MaxImage: Uses jQuery Cycle Plugin to create background slideshows" /></a>
 		
+		<style type="text/css" media="screen">
+			.curtains {
+				height:100%;
+				left:0;
+				position:absolute;
+				top:0;
+				width:100%;
+				z-index:99;
+			}
+			.curtains span {
+				background:#fff;
+				position:absolute;
+			}
+			.curtains .top {
+				height:100px;
+				left:0;
+				top:0;
+				width:100%;
+			}
+			.curtains .right {
+				height:100%;
+				right:0;
+				top:0;
+				width:100px;
+			}
+			.curtains .bottom {
+				bottom:0;
+				height:100px;
+				left:0;
+				width:100%;
+			}
+			.curtains .left {
+				height:100%;
+				left:0;
+				top:0;
+				width:100px;
+			}
+		</style>
+		<div class="curtains">
+			<span class="top"></span>
+			<span class="right"></span>
+			<span class="bottom"></span>
+			<span class="left"></span>
+		</div>
+		
 		<div id="maximage">
-			<img src="../lib/images/demo/oldmanb.jpg" alt="" width="1422" height="1800" />
-			<img src="../lib/images/demo/oldmantatoo.jpg" alt="" width="800" height="1200" />
-			<img src="../lib/images/demo/oldladyb.jpg" alt="" width="1166" height="1400" />
+			<img src="../lib/images/demo/oldmanb.jpg" width="1422" height="1800" alt="Oldmanb">
+			<img src="../lib/images/demo/test1.jpg" width="1095" height="730" alt="Test1">
+			<img src="../lib/images/demo/test2.jpg" width="1158" height="869" alt="Test2">
+			<img src="../lib/images/demo/test3.jpg" width="1600" height="1200" alt="Test3">
 		</div>
 		
 		<script src='http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js'></script>
@@ -62,34 +146,22 @@
 		<script type="text/javascript" charset="utf-8">
 			$(function(){
 				// Trigger maximage
-				$('#maximage').maximage({
+				jQuery('#maximage').maximage({
 					cssBackgroundSize: false, // We don't want to use background-size:cover for our custom size
 					backgroundSize: function( $item ){
 						// Contain Portrait
-						if ($item.data('h') > $item.data('w')) {
-							if ($.Window.data('w') / $.Window.data('h') < $item.data('ar')) {
-								$item
-									.height(($.Window.data('w') / $item.data('ar')).toFixed(0))
-									.width($.Window.data('w'));
-							} else {
-								$item
-									.height($.Window.data('h'))
-									.width(($.Window.data('h') * $item.data('ar')).toFixed(0));
-							}
-						} else {
-							if ($.Window.data('w') / $.Window.data('h') < $item.data('ar')) {
-								$item
-									.height($.Window.data('h'))
-									.width(($.Window.data('h') * $item.data('ar')).toFixed(0));
-							} else {
-								$item
-									.height(($.Window.data('w') / $item.data('ar')).toFixed(0))
-									.width($.Window.data('w'));
-							}
+						if($.Window.data('w') / $.Window.data('h') < $item.data('ar')){
+							$item
+								.height($.Window.data('h') - 200)
+								.width((($.Window.data('h') - 200) * $item.data('ar')).toFixed(0));
+						}else{
+							$item
+								.height((($.Window.data('w') - 200) / $item.data('ar')).toFixed(0))
+								.width($.Window.data('w') - 200);
 						}
 					},
 					onImagesLoaded: function(){
-						$('#maximage').fadeIn();
+						jQuery('#maximage').fadeIn();
 					}
 				});
 			});

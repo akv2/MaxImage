@@ -13,6 +13,7 @@ http://www.aaronvanderzwan.com/maximage/2.0/
 
 Version 2.0.7:
 * [Fixed] I have completely rewritten the Old.preload() method to avoid a Stack Overflow bug found in IE7 & IE8 if there are more than 13 slides.
+* [Added] QUnit tests in /tests
 
 Version 2.0.6:
 * [Added] Add ability for backgroundSize option to be passed as a function to the plugin.  This way you can completely customize how you want the image to resize.  See example @ http://www.aaronvanderzwan.com/maximage/2.0/#CustomBGSize

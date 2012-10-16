@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	    <title>Maximage Modern Browser Tests</title>
+ 
+	    <link rel="stylesheet" href="qunit.css" />
+	    <script src="qunit.js"></script>
+		<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js'></script>
+	    <script src="../lib/js/jquery.cycle.all.js"></script>
+	    <script src="../lib/js/jquery.maximage.js"></script>
+ 		
+		<style type="text/css" media="screen">
+			/* fillelement styles */
+			.holder {
+				margin: 0 auto;
+				width:400px;
+			}
+			.holder .fillelement {
+				position:relative;
+			}
+		</style>
+		
+	    <script>
+			// QUnit Tests : http://qunitjs.com/
+			module('Maximage');
+		    asyncTest("Basic", function() {
+				var $maximage = $('.maximage'), 
+					$tester;
+				
+				var test = $maximage.maximage({
+					onImagesLoaded: function( $self ){
+						if($self.hasClass('maximage')){
+							ready = true;
+						}
+					}
+				});
+				$tester = $maximage.children().eq(0);
+			
+				expect(1);
+				
+				// One second later
+				var i = setInterval(function() {
+					if(ready){
+						clearInterval(i);
+						
+						ok($tester.css('background-image').length > 0, 'background image has been set');
+						start();
+					}
+				}, 200);
+		    });
+			asyncTest("Customized", 3, function(){
+				var $maximage = $('.maximage').addClass('customized'), 
+					ready = false,
+					$tester;
+				
+				$maximage.maximage({
+					cycleOptions: {
+						speed: 100,
+						next: '#arrow_right'
+					},
+					onImagesLoaded: function( $self ){
+						event = $.Event( "click" );
+						$('#arrow_right').trigger( event );
+						
+						ready = true;
+					}
+				});
+				$tester = $maximage.children().eq(0);
+				
+				ok($tester.data('href').length > 0, 'href is set');
+				ok($tester.find('.innertext').length > 0, 'inner content is set');
+				
+				// Wait for slide transition to be completed to test if the second slide is visible
+				i = setInterval(function() {
+					if(ready){
+						clearInterval(i);
+						
+						setTimeout(function() {
+							equal($maximage.children().eq(1).css('display'), 'block', 'The slideshow has progressed 1 slide on click');
+							$maximage.removeClass('customized');
+							start();
+						}, 100);
+					}
+				}, 200);
+			})
+		
+			module('HTML5 Video');
+			test("Fullscreen", function() {
+				var $maximage = $('.maximage'), 
+					$tester;
+			
+				var test = $maximage.maximage();
+				$('video, object').maximage('maxcover');
+			
+				$tester = $maximage.find('video').first();
+			
+				expect(2);
+				ok($tester.height() >= $.Window.height(), 'height > or == to window height: ' + $tester.height() + 'v & ' + $.Window.height() + 'w' );
+				ok($tester.width() >= $.Window.width(), 'width > or == to window width: ' + $tester.width() + 'v & ' + $.Window.width() + 'w');
+			});
+			test("Centered", function() {
+				var $maximage = $('.maximage'), 
+					$tester;
+				
+				$maximage.maximage();
+				$('video, object').maximage('maxcover');
+				
+				$tester = $maximage.find('video').first();
+				
+				expect(2);
+				ok( parseInt( $tester.css('margin-left'), 10 ) <= 0, 'margin left is < or == 0: ' + $tester.css('margin-left') );
+				ok( parseInt( $tester.css('margin-top'), 10 ) <= 0, 'margin top is < or == 0: ' + $tester.css('margin-top') );
+			});
+			
+			// Uses separate HTML in fixtures
+			module('Custom Sizing Function');
+		    asyncTest("Portrait & Landscape", function() {
+				var $maximage = $('.customBG'), 
+					ready = false, 
+					i;
+			
+				var test = $maximage.maximage({
+					cssBackgroundSize: false, // We don't want to use background-size:cover for our custom size
+					backgroundSize: function( $item ){
+						// Contain Portrait
+						if ($item.data('h') > $item.data('w')) {
+							if ($.Window.data('w') / $.Window.data('h') < $item.data('ar')) {
+								$item
+									.height(($.Window.data('w') / $item.data('ar')).toFixed(0))
+									.width($.Window.data('w'));
+							} else {
+								$item
+									.height($.Window.data('h'))
+									.width(($.Window.data('h') * $item.data('ar')).toFixed(0));
+							}
+						} else {
+							if ($.Window.data('w') / $.Window.data('h') < $item.data('ar')) {
+								$item
+									.height($.Window.data('h'))
+									.width(($.Window.data('h') * $item.data('ar')).toFixed(0));
+							} else {
+								$item
+									.height(($.Window.data('w') / $item.data('ar')).toFixed(0))
+									.width($.Window.data('w'));
+							}
+						}
+					},
+					onImagesLoaded: function( $item ){
+						if($item.hasClass('customBG')){
+							ready = true;
+						}
+					}
+				});
+			
+				// Todo: write this test
+				expect(2);
+			
+				// One second later
+				i = setInterval(function() {
+					if(ready){
+						clearInterval(i);
+					
+						var $first = $('.customBG').find('img').first(),
+							$last =  $('.customBG').find('img').last()
+							windowHeight = $(window).height(),
+							windowWidth = $(window).width();
+					
+						// If window is wider than image (has whitespace on either side of portrait)
+						if(windowWidth > $first.width()){
+							// Portrait
+							ok( $first.height() == windowHeight, 'portrait image height same as window: ' + $first.height() + 'i & ' + windowHeight + 'w');
+						
+							// Landscape
+							ok( $last.height() >= windowHeight, 'landscape height fits fullscreen: ' + $last.height() + 'i & ' + windowHeight + 'w');
+						}else{
+							ok( false, "Browser window has to be wider than tall to test this");
+						}
+						start();
+					}
+				}, 200);
+		    });
+		
+			// Uses separate HTML in fixtures
+			module('Fill Element');
+			test("Contained", function() {
+				var $fillelement = $('.fillelement'),
+					$holder = $('.holder'),
+					$tester;
+				
+				var test = $fillelement.maximage({
+					fillElement: '.holder',
+					backgroundSize: 'contain'
+				});
+				
+				$tester = $fillelement.children().first();
+				
+				expect(1);
+				ok($tester.width() == $holder.width(), 'width == ' + $tester.width() + ' and holder width = ' + $holder.width());
+			});
+	    </script>
+	</head>
+<body>
+	<div id="qunit"></div>
+	<div id="qunit-fixture">
+		<!-- Testing basic example -->
+		<div class="maximage">
+			<div>
+				<img src="../lib/images/demo/wall_portrait.jpg" alt="" width="1400" height="1050" data-href="http://www.aaronvanderzwan.com/" />
+				<div class="innertext">What do you think of innertext</div>
+			</div>
+			<div class="video">
+				<img src="../lib/images/demo/pattern.jpg" alt="" />
+				<div class="in-slide-content light-text smaller-text">
+					<p>Maximage does not assume anything about your in-slide HTML.  So you can resize HTML5 videos to fill the screen (using the Maximage helper function) or you can place it on the page with a standard maximized background image. PLEASE NOTE: HTML5 flash fallback does not work for IE7 &amp; IE8 in slideshows at this time.  It has proven more difficult than was expected.</p>
+					<p><a href="http://blog.aaronvanderzwan.com/2011/11/maximage-2-0-beta1-release/" target="_blank" style="font-weight:bold">More info >></a></p>
+				</div>
+				<!-- "Video For Everybody" http://camendesign.com/code/video_for_everybody -->
+				<video controls="controls" muted="muted" poster="http://sandbox.thewikies.com/vfe-generator/images/big-buck-bunny_poster.jpg" width="640" height="360">
+					<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4" />
+					<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm" type="video/webm" />
+					<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv" type="video/ogg" />
+					Your browser does not support HTML5 videos.
+				</video>
+			</div>
+			<img src="../lib/images/demo/coalesse.jpg" alt="Coalesse" width="1400" height="1050" />
+		</div>
+		
+		<!-- Arrows for Customized -->
+		<a href="" id="arrow_right"></a>
+		
+		<!-- Custom BG Tests  -->
+		<div class="customBG">
+			<img src="../lib/images/demo/oldmanb.jpg" alt="" width="1422" height="1800" />
+			<img src="../lib/images/demo/coalesse.jpg" alt="Coalesse" width="1400" height="1050" />
+		</div>
+		
+		<!-- Fill Element Tests  -->
+		<div class="holder">
+			<div class="fillelement">
+				<img src="../lib/images/demo/wall_portrait.jpg" alt="" width="1400" height="1050" />
+				<img src="../lib/images/demo/coalesse.jpg" alt="Coalesse" width="1400" height="1050" />
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

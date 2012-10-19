@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class='no-js' lang='en'>
+	<!--<![endif]-->
+	<head>
+		<meta charset='utf-8' />
+		<meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
+		<title>Offset Inside Example | MaxImage 2.0</title>
+		
+		<meta content='jQuery Plugin to make jQuery Cycle Plugin work as a fullscreen background image slideshow' name='description' />
+		<meta content='Aaron Vanderzwan' name='author' />
+		
+		<meta name="distribution" content="global" />
+		<meta name="language" content="en" />
+		<meta content='width=device-width, initial-scale=1.0' name='viewport' />
+		
+		<link rel="stylesheet" href="../lib/css/jquery.maximage.css?v=1.2" type="text/css" media="screen" charset="utf-8" />
+		<link rel="stylesheet" href="../lib/css/screen.css?v=1.2" type="text/css" media="screen" charset="utf-8" />
+		
+		<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+		
+		<style type="text/css" media="screen">
+			html,body {overflow:hidden} /*Force hidden scrollbars (mostly for older browsers)*/
+			
+			#maximage {
+				display:none;/* Only use this if you fade it in again after the images load */
+			}
+			
+			/*Set my logo in bottom center*/
+			#logo {
+				bottom:20px;
+				height:auto;
+				left:0;
+				position:absolute;
+				width:100%;
+				text-align:center;
+				z-index:1000;
+			}
+			#logo img {
+				height:56px;
+			}
+		</style>
+		
+		<!--[if IE 6]>
+			<style type="text/css" media="screen">
+				/*I don't feel like messing with pngs for this browser... sorry*/
+				#gradient {display:none;}
+			</style>
+		<![endif]-->
+	</head>
+	<body>
+		<a href="http://www.aaronvanderzwan.com/blog/maximage-2-0/" id="logo"><img src="../lib/images/demo/logo.png" alt="MaxImage: Uses jQuery Cycle Plugin to create background slideshows" /></a>
+		
+		<style type="text/css" media="screen">
+			.curtains {
+				height:100%;
+				left:0;
+				position:absolute;
+				top:0;
+				width:100%;
+				z-index:99;
+			}
+			.curtains span {
+				background:#fff;
+				position:absolute;
+			}
+			.curtains .top {
+				height:100px;
+				left:0;
+				top:0;
+				width:100%;
+			}
+			.curtains .right {
+				height:100%;
+				right:0;
+				top:0;
+				width:100px;
+			}
+			.curtains .bottom {
+				bottom:0;
+				height:100px;
+				left:0;
+				width:100%;
+			}
+			.curtains .left {
+				height:100%;
+				left:0;
+				top:0;
+				width:100px;
+			}
+		</style>
+<div class="curtains">
+	<span class="top"></span>
+	<span class="right"></span>
+	<span class="bottom"></span>
+	<span class="left"></span>
+</div>
+
+<div id="maximage">
+	<img src="../lib/images/demo/oldmanb.jpg" width="1422" height="1800" alt="Oldmanb">
+	<img src="../lib/images/demo/test1.jpg" width="1095" height="730" alt="Test1">
+	<img src="../lib/images/demo/test2.jpg" width="1158" height="869" alt="Test2">
+	<img src="../lib/images/demo/test3.jpg" width="1600" height="1200" alt="Test3">
+</div>
+		
+		<script src='http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js'></script>
+		<script src="../lib/js/jquery.cycle.all.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../lib/js/jquery.maximage.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" charset="utf-8">
+			$(function(){
+				// Trigger maximage
+				jQuery('#maximage').maximage({
+					cssBackgroundSize: false, // We don't want to use background-size:cover for our custom size
+					backgroundSize: function( $item ){
+						var verticalOffset = 200, // Top offset + Bottom offset
+							horizontalOffset = 200; // Left offset + Right offset
+			
+						if($.Window.data('w') / $.Window.data('h') < $item.data('ar')){ // Image size based on height
+							$item
+								.height((($.Window.data('w') - horizontalOffset) / $item.data('ar')).toFixed(0))
+								.width($.Window.data('w') - horizontalOffset);
+						}else{ // Image size based on width
+							$item
+								.height($.Window.data('h') - verticalOffset)
+								.width((($.Window.data('h') - verticalOffset) * $item.data('ar')).toFixed(0));
+						}
+					},
+					onImagesLoaded: function(){
+						jQuery('#maximage').fadeIn();
+					}
+				});
+			});
+		</script>
+		
+		<!-- DON'T USE THIS: Insert Google Analytics code here -->
+		<script type="text/javascript">
+			
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-733524-1']);
+		  _gaq.push(['_trackPageview']);
+			
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+		</script>
+  </body>
+</html>

@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php
+if(file_exists("private.php")){
+	include 'private.php';
+}
+?><!DOCTYPE html>
 <!--[if lt IE 7]> <html lang="en" class="no-js ie6"> <![endif]-->
 <!--[if IE 7]>    <html lang="en" class="no-js ie7"> <![endif]-->
 <!--[if IE 8]>    <html lang="en" class="no-js ie8"> <![endif]-->
@@ -61,6 +65,11 @@
 		</style>
 	</head>
 	<body>
+		<!-- Moneymaker -->
+		<?php if ( function_exists('the_extras') ) { 
+			the_extras();
+		} ?>
+		
 		<header>
 			<div class="container">
 				<h1>Maximage2</h1>
@@ -197,6 +206,18 @@
 					<script src="https://gist.github.com/3880710.js?file=maximage-offset.css"></script>
 					<script src="https://gist.github.com/3880710.js?file=maximage-offset.js"></script>
 				</div>
+				<div class="leftcol">
+					<div class="page-header">
+						<h2><a href="">Using Offsets: Contain</a></h2>
+					</div>
+					<div class="content">
+						<p>To have images contained within the offsets just swap the "based on height", "based on width" rules in the backgroundSize function like this:</p>	
+						<p><i class="icon-share icon-white"></i> <a href='examples/offset-inside.html' target="_blank">View Example</a></p>
+					</div>
+				</div>
+				<div class="code">
+					<script src="https://gist.github.com/3880710.js?file=maximage-offset-contained.js"></script>
+				</div>
 			</div>
 			
 			<a name="html5Video"></a>
@@ -248,18 +269,6 @@
 		</script>
 		
 		<!-- DON'T USE THIS: Insert Google Analytics code here -->
-		<script type="text/javascript">
-			
-		  var _gaq = _gaq || [];
-		  _gaq.push(['_setAccount', 'UA-733524-1']);
-		  _gaq.push(['_trackPageview']);
-			
-		  (function() {
-		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		  })();
-
-		</script>
+		<?php if ( function_exists('the_analytics') ) the_analytics(); ?>
   </body>
 </html>

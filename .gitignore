@@ -1,2 +1,5 @@
 /examples/.DS_Store
 .DS_Store
+
+/config.rb
+/private.php

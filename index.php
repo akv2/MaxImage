@@ -80,6 +80,7 @@ if(file_exists("private.php")){
 						<li><a href="http://blog.aaronvanderzwan.com/2012/07/maximage-2-0/#options" target="_blank">options</a></li>
 						<li><a href="http://blog.aaronvanderzwan.com/forums/forum/maximage-2-0/" target="_blank">forum</a></li>
 						<li><a href="http://blog.aaronvanderzwan.com/2012/07/maximage-2-0/#download" target="_blank">download</a></li>
+						<li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=6JDK29W3R3HVY&lc=US&item_name=Maximage%202%2e0%20%2d%20Aaron%20Vanderzwan%20L%2eL%2eC%2e&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted" target="_blank">donate</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -121,6 +122,11 @@ if(file_exists("private.php")){
 				</div>
 			</div>
 			
+			<!-- Moneymaker -->
+			<?php if ( function_exists('the_ad2') ) { 
+				the_ad2();
+			} ?>
+			
 			
 			<a name="Customized"></a>
 			<div class="example customized-example">
@@ -141,7 +147,6 @@ if(file_exists("private.php")){
 					<script src="https://gist.github.com/3306636.js"> </script>
 				</div>
 			</div>
-			
 			
 			<a name="FillElement"></a>
 			<div class="example fillelement-example">

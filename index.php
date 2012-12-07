@@ -164,7 +164,8 @@ if(file_exists("private.php")){
 					<img src="lib/images/ss-fillelement.png" alt="FillElement Example Screenshot" width="466" height="370" />
 				</div>
 				<div class="code">
-					<script src="https://gist.github.com/3307386.js"> </script>
+					<script src="https://gist.github.com/3307386.js?file=maximage-fillelement.css"> </script>
+					<script src="https://gist.github.com/3307386.js?file=maximage-fillelement.js"></script>
 				</div>
 			</div>
 			
@@ -197,6 +198,7 @@ if(file_exists("private.php")){
 						<h2><a href="">Using Offsets</a></h2>
 					</div>
 					<div class="content">
+						<p>Caution: This example is meant for expert users.  Remember, with <a href="#FillElement">FillElement</a> you can often accomplish an offset scheme very easily... just set your containing element where you want the images to be displayed.</p>
 						<p>Because the first rule of Maximage 2.0 is to try to remain hands off and out of your way, the built in support for offsets have been dropped with version 2.0.  This doesn't mean they aren't possible.  With a little elbow grease they can still be accomplished (and are better).</p>
 						<p>What I am doing with the below code is creating curtains / offsets that live in front of the slideshow.  I call these curtains.  I have done this with the HTML and CSS below for 100px offsets on the top, right, bottom and left edges of the screen.</p>
 						<p>Once we have our curtains up, the slideshow is still resizing to the full window and we want to have it maximize within the viewable area... our window size minus our offsets.  For this reason you have to customize the function that resizes the window. We can do that with the backgroundSize option that gets passed to Maximage.  Just set your verticalOffset and horizontalOffset in backgroundSize (JS example below) to size your slideshow images within the viewable area.</p>

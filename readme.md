@@ -1,4 +1,4 @@
-## Currently at Version 2.0.7
+## Currently at Version 2.0.8
 
 Documentation can be found at:
 http://blog.aaronvanderzwan.com/2012/07/maximage-2-0/
@@ -10,6 +10,9 @@ http://www.aaronvanderzwan.com/maximage/2.0/
 * HTML5 video fallbacks for IE7 & IE8 currently do not fill the screen within a slideshow.  I am working on this currently, but if this is important to you, please use another slideshow for the time being and check back for updates as this has proven more complex than was expected.
 
 ## Changelog:
+
+Version 2.0.8:
+* [Fixed] With jQuery removing $.browser Maximage now does it's own browser detection.
 
 Version 2.0.7:
 * [Fixed] I have completely rewritten the Old.preload() method to avoid a Stack Overflow bug found in IE7 & IE8 if there are more than 13 slides.
